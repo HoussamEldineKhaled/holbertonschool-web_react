@@ -22,27 +22,26 @@ const student2: Student = {
 
 const studentsList: Student[] = [student1, student2];
 
-function renderTable(students: Student[]){
-    const table:HTMLTableElement = document.createElement("table");
 
-    const headerRow = table.insertRow();
-    const headerCell1 = headerRow.insertCell(0);
-    const headerCell2 = headerRow.insertCell(1);
+const table:HTMLTableElement = document.createElement('table');
 
-    headerCell1.innerText = 'First Name';
-    headerCell2.innerText = 'Location';
+document.body.appendChild(table);
 
-    students.forEach(student => {
-        const row = table.insertRow();
-        const cell1 = row.insertCell(0);
-        const cell2 = row.insertCell(1);
+const headerRow: HTMLTableRowElement = table.insertRow();
 
-        cell1.innerText = student.firstName;
-        cell2.innerText = student.location;
-    });
+const firstNameHeader: HTMLTableCellElement = headerRow.insertCell();
 
-    document.body.appendChild(table);
-    
-}
+const locationHeader: HTMLTableCellElement = headerRow.insertCell();
 
-renderTable(studentsList);
+firstNameHeader.innerHTML = 'First Name';
+
+locationHeader.innerHTML = 'Location';
+
+studentsList.forEach((student) => {
+    const row: HTMLTableRowElement = table.insertRow();
+    const firstName: HTMLTableCellElement = row.insertCell();
+    const location: HTMLTableCellElement = row.insertCell();
+
+    firstName.innerHTML = student.firstName;
+    location.innerHTML = student.location;
+});
