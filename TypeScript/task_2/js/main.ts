@@ -47,5 +47,11 @@ function createEmployee(salary: string | number): Director | Teacher {
     return new Director();
 }
 
+function isDirector(employee: Director | Teacher){
+    return employee instanceof Director;
+}
 
+function executeWork(employee: Director | Teacher){
+    return (employee instanceof Director) ? employee.workDirectorTasks() : employee.workTeacherTasks();
+}
 
